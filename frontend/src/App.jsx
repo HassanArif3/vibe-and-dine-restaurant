@@ -7,6 +7,7 @@ import Reservation from './pages/Reservation';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Cart from './pages/Cart';
+import AiCallAgent from './pages/AiCallAgent';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/ai-agent" element={<AiCallAgent />} />
       </Routes>
       <Footer />
     </Router>

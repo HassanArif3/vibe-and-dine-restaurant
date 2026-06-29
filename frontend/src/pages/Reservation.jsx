@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, Users, Phone, User, MessageSquare } from 'lucide-react';
+import FloorPlanSelector from '../components/reservation/FloorPlanSelector';
 
 const Reservation = () => {
+  const [selectedTable, setSelectedTable] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -27,12 +29,17 @@ const Reservation = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!selectedTable) {
+      alert('Please select a dining table from the visual layout floor plan.');
+      return;
+    }
     try {
-      console.log('Reservation Data:', formData);
-      showNotification('Table reserved successfully! We look forward to hosting you at Vibe & Dine.');
+      console.log('Reservation Data:', { ...formData, tableId: selectedTable });
+      showNotification(`Table ${selectedTable} reserved successfully! We look forward to hosting you at Vibe & Dine.`);
       setFormData({
         name: '', phone: '', date: '', time: '', guests: 2, specialRequests: ''
       });
+      setSelectedTable(null);
     } catch (err) {
       console.error(err);
       showNotification('Failed to make reservation. Please try again.');
@@ -64,6 +71,8 @@ const Reservation = () => {
             transition={{ duration: 0.6 }}
           >
             <form onSubmit={handleSubmit}>
+              <FloorPlanSelector selectedTable={selectedTable} onSelectTable={setSelectedTable} />
+              
               <div className="form-grid">
                 <div className="form-group">
                   <label className="form-label"><User size={14} /> Full Name</label>

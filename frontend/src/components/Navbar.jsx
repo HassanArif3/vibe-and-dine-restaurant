@@ -51,6 +51,7 @@ const Navbar = () => {
           <Link to="/" className={location.pathname === '/' ? 'active' : ''} onClick={closeMenu}>Home</Link>
           <Link to="/menu" className={location.pathname === '/menu' ? 'active' : ''} onClick={closeMenu}>Menu</Link>
           <Link to="/reservation" className={location.pathname === '/reservation' ? 'active' : ''} onClick={closeMenu}>Reservations</Link>
+          <Link to="/ai-agent" className={location.pathname === '/ai-agent' ? 'active' : ''} onClick={closeMenu}>AI Ordering</Link>
 
           {user ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
