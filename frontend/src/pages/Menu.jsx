@@ -58,14 +58,39 @@ const Menu = () => {
 
           {!loading && (
             <>
-              <div className="menu-toolbar">
-                <div className="search-box">
-                  <Search size={18} />
+              <div className="menu-toolbar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
+                <div className="search-box" style={{
+                  position: 'relative',
+                  display: 'flex',
+                  alignItems: 'center',
+                  minWidth: '300px',
+                  background: '#ffffff',
+                  border: '1px solid #E5E7EB',
+                  borderRadius: '50px',
+                  padding: '10px 16px 10px 45px',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+                  transition: 'all 0.3s ease'
+                }}>
+                  <Search size={18} style={{
+                    position: 'absolute',
+                    left: '16px',
+                    color: '#9CA3AF',
+                    pointerEvents: 'none'
+                  }} />
                   <input 
                     type="text" 
                     placeholder="Search menu items..." 
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
+                    style={{
+                      width: '100%',
+                      border: 'none',
+                      background: 'transparent',
+                      outline: 'none',
+                      fontFamily: 'inherit',
+                      fontSize: '0.9rem',
+                      color: '#1A1A1A'
+                    }}
                   />
                 </div>
                 <div className="category-filter">
