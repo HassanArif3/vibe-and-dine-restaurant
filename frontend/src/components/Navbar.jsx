@@ -1,13 +1,11 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu as MenuIcon, X, ShoppingCart, User } from 'lucide-react';
-import { AppContext } from '../context/AppContext';
+import { Menu as MenuIcon, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const { user, logout, cart } = useContext(AppContext);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -16,7 +14,6 @@ const Navbar = () => {
   }, []);
 
   const closeMenu = () => setMobileMenuOpen(false);
-  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const isHomePage = location.pathname === '/';
   const showScrolledNavbar = isScrolled || !isHomePage;
@@ -55,22 +52,8 @@ const Navbar = () => {
           <Link to="/menu" className={location.pathname === '/menu' ? 'active' : ''} onClick={closeMenu}>Menu</Link>
           <Link to="/reservation" className={location.pathname === '/reservation' ? 'active' : ''} onClick={closeMenu}>Reservations</Link>
           <Link to="/ai-agent" className={location.pathname === '/ai-agent' ? 'active' : ''} onClick={closeMenu}>AI Ordering</Link>
-
-          {user ? (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-              <span style={{ color: 'var(--primary)', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.85rem' }}>
-                <User size={14} />{user.name}
-              </span>
-              <button onClick={() => { logout(); closeMenu(); }} className="btn btn-outline" style={{ padding: '4px 12px', fontSize: '0.75rem' }}>Logout</button>
-            </div>
-          ) : (
-            <Link to="/login" className={location.pathname === '/login' ? 'active' : ''} onClick={closeMenu}>Login</Link>
-          )}
-
-          <Link to="/cart" onClick={closeMenu} style={{ position: 'relative', display: 'flex' }}>
-            <ShoppingCart size={20} />
-            {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-          </Link>
+          <a href="/#gallery" className={location.hash === '#gallery' ? 'active' : ''} onClick={closeMenu}>Gallery</a>
+          <a href="/#contact" className={location.hash === '#contact' ? 'active' : ''} onClick={closeMenu}>Contact</a>
         </div>
 
         <button className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
