@@ -18,8 +18,11 @@ const Navbar = () => {
   const closeMenu = () => setMobileMenuOpen(false);
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
+  const isHomePage = location.pathname === '/';
+  const showScrolledNavbar = isScrolled || !isHomePage;
+
   return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${showScrolledNavbar ? 'scrolled' : ''}`}>
       <div className="container">
         <Link to="/" onClick={closeMenu} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <svg width="38" height="38" viewBox="0 0 48 48">
@@ -34,13 +37,13 @@ const Navbar = () => {
               fontFamily: "'Playfair Display', serif",
               fontSize: '1.2rem',
               fontWeight: 700,
-              color: isScrolled ? 'var(--text)' : '#fff',
+              color: showScrolledNavbar ? 'var(--text)' : '#fff',
               letterSpacing: '0.5px',
               lineHeight: 1.1
             }}>VIBE &amp; DINE</div>
             <div style={{
               fontSize: '0.6rem',
-              color: isScrolled ? 'var(--text-light)' : 'rgba(255,255,255,0.6)',
+              color: showScrolledNavbar ? 'var(--text-light)' : 'rgba(255,255,255,0.6)',
               letterSpacing: '2px',
               textTransform: 'uppercase'
             }}>RESTAURANT &amp; GRILL</div>
