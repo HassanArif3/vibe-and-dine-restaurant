@@ -52,8 +52,9 @@ const Navbar = () => {
           <Link to="/menu" className={location.pathname === '/menu' ? 'active' : ''} onClick={closeMenu}>Menu</Link>
           <Link to="/reservation" className={location.pathname === '/reservation' ? 'active' : ''} onClick={closeMenu}>Reservations</Link>
           <Link to="/ai-agent" className={location.pathname === '/ai-agent' ? 'active' : ''} onClick={closeMenu}>AI Ordering</Link>
-          <a href="/#gallery" className={location.hash === '#gallery' ? 'active' : ''} onClick={closeMenu}>Gallery</a>
-          <a href="/#contact" className={location.hash === '#contact' ? 'active' : ''} onClick={closeMenu}>Contact</a>
+          <a href="/#gallery" onClick={closeMenu}>Gallery</a>
+          <a href="/#contact" onClick={closeMenu}>Location</a>
+          <a href="/#contact" onClick={closeMenu}>Contact</a>
         </div>
 
         <button className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
