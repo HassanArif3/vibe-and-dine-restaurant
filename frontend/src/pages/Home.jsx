@@ -200,7 +200,7 @@ const Home = () => {
                   transition: 'var(--transition)'
                 }}
               >
-                <div style={{ overflow: 'hidden', height: '220px', relative: 'true' }}>
+                <div className="menu-img-wrapper" style={{ overflow: 'hidden', position: 'relative' }}>
                   <img 
                     src={item.img} 
                     alt={item.name} 
@@ -209,7 +209,7 @@ const Home = () => {
                   />
                 </div>
                 <div className="menu-content" style={{ padding: '1.8rem' }}>
-                  <div className="menu-header" style={{ display: 'flex', justifyContent: 'between', alignItems: 'center', marginBottom: '0.8rem' }}>
+                  <div className="menu-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.8rem' }}>
                     <h3 className="menu-title" style={{ fontFamily: 'inherit', fontSize: '1.25rem', fontWeight: 700 }}>{item.name}</h3>
                     <span className="menu-price" style={{ color: 'var(--primary)', fontWeight: 700, fontSize: '1.15rem' }}>Rs. {item.price}</span>
                   </div>

@@ -16,7 +16,7 @@ const Navbar = () => {
   const closeMenu = () => setMobileMenuOpen(false);
 
   const isHomePage = location.pathname === '/';
-  const showScrolledNavbar = isScrolled || !isHomePage;
+  const showScrolledNavbar = isScrolled || !isHomePage || mobileMenuOpen;
 
   return (
     <nav className={`navbar ${showScrolledNavbar ? 'scrolled' : ''}`}>
