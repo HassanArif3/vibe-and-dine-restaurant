@@ -1,0 +1,9 @@
+{
+  "name": "vibe-and-dine-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install-frontend": "npm install --prefix frontend",
+    "build": "npm run install-frontend && npm run build --prefix frontend && node copy-dist.js"
+  }
+}
